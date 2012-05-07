@@ -18,8 +18,8 @@ Arthur,Two Sheds,Jackson
 require 'csveasy'  
 
 data = Csveasy.read('file/path')  
-=> [ { 'first_name' => 'Fred',   'middle_name' => 'Sonic',     'last_name' => 'Smith' }, 
-     { 'first_name' => 'Arthur', 'middle_name' => 'Two Sheds', 'last_name' => 'Jackson' } ]
+=> [ #<Hashie::Mash first_name='Fred'   middle_name='Sonic'     last_name='Smith'>, 
+     #<Hashie::Mash first_name='Arthur' middle_name='Two Sheds' last_name='Jackson'> ]
 ```
 
 ### Writing
@@ -35,6 +35,13 @@ Csveasy.write('file/path', data)
 require 'csveasy'  
 
 data = [ { 'header_1' => 'value_a', 'header_2' => 'value_b' },  { 'header_1' => 'value_c', 'header_2' => 'value_d' } ]
+
+Csveasy.write('file/path', data)
+#### From an array of Hashie::Mash Objects
+```ruby
+require 'csveasy'  
+
+data = [ #<Hashie::Mash header_1='value_a' header_2='value_b' >, #<Hashie::Mash header_1='value_c' header_2='value_d'> ]
 
 Csveasy.write('file/path', data)
 ```
