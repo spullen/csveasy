@@ -37,6 +37,7 @@ require 'csveasy'
 data = [ { 'header_1' => 'value_a', 'header_2' => 'value_b' },  { 'header_1' => 'value_c', 'header_2' => 'value_d' } ]
 
 Csveasy.write('file/path', data)
+```
 #### From an array of Hashie::Mash Objects
 ```ruby
 require 'csveasy'  
