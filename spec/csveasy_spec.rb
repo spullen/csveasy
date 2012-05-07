@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'csveasy'
 
 describe Csveasy do
 
@@ -23,8 +22,8 @@ describe Csveasy do
         @result.should be_instance_of(Array)
       end
 
-      it 'contains an array of hashes' do
-        @result[0].should be_instance_of(Hash)
+      it 'contains an array of Hashie::Mashes' do
+        @result[0].should be_instance_of(Mash)
       end
 
       describe 'array hashes' do

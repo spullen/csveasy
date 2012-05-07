@@ -22,7 +22,7 @@ class Writer
     end
 
     def convert_hashes_to_arrays
-      if array_of?(Hash)
+      if array_of?(Hash) || array_of?(Mash)
         @data = @data.inject([]) { |array, hash| array << hash.values }.insert(0, @data[0].keys)
       end
     end

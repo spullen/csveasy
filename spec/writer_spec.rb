@@ -104,6 +104,19 @@ describe Writer do
       end
 
     end
+    
+    context 'when @data is an array of Hashie::Mashes' do
+    
+      it 'converts it into a CSV-consumable array of arrays' do
+        data = [ Hashie::Mash.new({'first_name' => 'Barney', 'last_name' => 'Rubble'}) ]
+        expected = [ [ 'first_name', 'last_name' ], [ 'Barney', 'Rubble' ] ]
+        writer = Writer.new('some/filepath', data)
+        writer.send(:convert_hashes_to_arrays)
+        
+        writer.instance_variable_get(:@data).should eql(expected)
+      end
+    
+    end
 
   end
 
@@ -154,6 +167,21 @@ describe Writer do
 
       it_should_behave_like 'returns false'
 
+    end
+    
+    context 'when argument is a Mash' do
+    
+      before do
+        @klass = Array
+      end
+      
+      it 'returns true' do
+        data = [ Hashie::Mash.new ]
+        writer = Writer.new('', data)
+      end
+    
+      it_should_behave_like 'returns false'
+      
     end
 
   end

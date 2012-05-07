@@ -1,6 +1,10 @@
+require 'hashie'
+
 require 'csveasy/version'
 require 'csveasy/reader'
 require 'csveasy/writer'
+
+include Hashie
 
 module Csveasy
 

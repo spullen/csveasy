@@ -8,7 +8,7 @@ class Reader
 
   def read
     CSV.read(@filepath, :headers => true, :skip_blanks => true).inject([]) do |array, row|
-      array << Hash[row]
+      array << Mash.new(Hash[row])
     end
   end
 
